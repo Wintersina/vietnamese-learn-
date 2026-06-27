@@ -1,0 +1,143 @@
+deck:
+  slug: family
+  name: "Family (Gia đình)"
+  category: vocabulary
+  order: 4
+  description: >
+    Family terms in Southern Vietnamese. Many differ sharply from the North:
+    Southerners say 'ba/má' for parents (North: 'bố/mẹ'), and 'd' in 'dì'
+    sounds like 'y'. Vietnamese also distinguishes paternal vs maternal sides.
+
+cards:
+  - key: ba
+    vietnamese: "ba"
+    english: "dad / father"
+    southern_ipa: "/baː/"
+    tone_pattern: [ngang]
+    southern_notes: "Southern word for dad. Northern says 'bố'."
+    tags: [southern-key, parent]
+  - key: ma
+    vietnamese: "má"
+    english: "mom / mother"
+    southern_ipa: "/maː/"
+    tone_pattern: [sac]
+    southern_notes: "Southern word for mom. Northern says 'mẹ'."
+    tags: [southern-key, parent]
+  - key: tia
+    vietnamese: "tía"
+    english: "dad (rural/affectionate)"
+    southern_ipa: "/tiə/"
+    tone_pattern: [sac]
+    southern_notes: "Rural Southern term for father, alongside 'ba'."
+    tags: [southern-key, parent]
+  - key: ong-noi
+    vietnamese: "ông nội"
+    english: "grandpa (dad's side)"
+    southern_ipa: "/oŋ noj/"
+    tone_pattern: [ngang, nang]
+    tags: [grandparent]
+  - key: ba-noi
+    vietnamese: "bà nội"
+    english: "grandma (dad's side)"
+    southern_ipa: "/ɓaː noj/"
+    tone_pattern: [huyen, nang]
+    tags: [grandparent]
+  - key: ong-ngoai
+    vietnamese: "ông ngoại"
+    english: "grandpa (mom's side)"
+    southern_ipa: "/oŋ ŋwaːj/"
+    tone_pattern: [ngang, nang]
+    southern_notes: "'nội' = dad's side, 'ngoại' = mom's side."
+    tags: [grandparent]
+  - key: ba-ngoai
+    vietnamese: "bà ngoại"
+    english: "grandma (mom's side)"
+    southern_ipa: "/ɓaː ŋwaːj/"
+    tone_pattern: [huyen, nang]
+    tags: [grandparent]
+  - key: anh
+    vietnamese: "anh"
+    english: "older brother"
+    southern_ipa: "/aɲ/"
+    tone_pattern: [ngang]
+    tags: [sibling]
+  - key: chi
+    vietnamese: "chị"
+    english: "older sister"
+    southern_ipa: "/ci/"
+    tone_pattern: [nang]
+    tags: [sibling]
+  - key: em
+    vietnamese: "em"
+    english: "younger sibling"
+    southern_ipa: "/ɛm/"
+    tone_pattern: [ngang]
+    tags: [sibling]
+  - key: con
+    vietnamese: "con"
+    english: "child"
+    southern_ipa: "/kɔn/"
+    tone_pattern: [ngang]
+    tags: [child]
+  - key: con-trai
+    vietnamese: "con trai"
+    english: "son"
+    southern_ipa: "/kɔn ʈaːj/"
+    tone_pattern: [ngang, ngang]
+    tags: [child]
+  - key: con-gai
+    vietnamese: "con gái"
+    english: "daughter"
+    southern_ipa: "/kɔn ɣaːj/"
+    tone_pattern: [ngang, sac]
+    tags: [child]
+  - key: chau
+    vietnamese: "cháu"
+    english: "grandchild / niece / nephew"
+    southern_ipa: "/caːw/"
+    tone_pattern: [sac]
+    tags: [extended]
+  - key: co
+    vietnamese: "cô"
+    english: "aunt (dad's younger sister)"
+    southern_ipa: "/koː/"
+    tone_pattern: [ngang]
+    tags: [extended]
+  - key: chu
+    vietnamese: "chú"
+    english: "uncle (dad's younger brother)"
+    southern_ipa: "/cuː/"
+    tone_pattern: [sac]
+    tags: [extended]
+  - key: bac
+    vietnamese: "bác"
+    english: "aunt/uncle (parent's older sibling)"
+    southern_ipa: "/baːk/"
+    tone_pattern: [sac]
+    tags: [extended]
+  - key: cau
+    vietnamese: "cậu"
+    english: "uncle (mom's brother)"
+    southern_ipa: "/kəw/"
+    tone_pattern: [nang]
+    tags: [extended]
+  - key: di
+    vietnamese: "dì"
+    english: "aunt (mom's sister)"
+    southern_ipa: "/jiː/"
+    tone_pattern: [huyen]
+    southern_notes: "Southern: 'd' = 'y', so 'dì' sounds like 'yì'."
+    tags: [southern-key, extended]
+  - key: vo
+    vietnamese: "vợ"
+    english: "wife"
+    southern_ipa: "/jəː/"
+    tone_pattern: [nang]
+    southern_notes: "Southern: 'v' often = 'y', so 'vợ' sounds like 'yợ'."
+    tags: [southern-key, spouse]
+  - key: chong
+    vietnamese: "chồng"
+    english: "husband"
+    southern_ipa: "/coŋ/"
+    tone_pattern: [huyen]
+    tags: [spouse]

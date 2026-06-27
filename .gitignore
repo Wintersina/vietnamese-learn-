@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+*.egg-info/
+
+# Django — the local DB is derived data, never commit it
+db.sqlite3
+db.sqlite3-journal
+
+# Cached TTS audio (regenerated on demand from FPT.AI)
+media/
+
+# Secrets
+.env
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/

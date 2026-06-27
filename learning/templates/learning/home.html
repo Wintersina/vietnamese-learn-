@@ -1,0 +1,23 @@
+{% extends "learning/base.html" %}
+
+{% block content %}
+<section class="decks">
+  <h1>Pick a deck to study</h1>
+  <p class="sub">Southern dialect (giọng miền Nam) · letters → numbers → conversation</p>
+  <div class="deck-grid">
+    {% for deck in decks %}
+      <div class="deck-card cat-{{ deck.category }}">
+        <span class="deck-cat">{{ deck.get_category_display }}</span>
+        <span class="deck-name">{{ deck.name }}</span>
+        <span class="deck-count">{{ deck.cards.count }} cards</span>
+        <div class="deck-actions">
+          <a class="study" href="{% url 'learning:study' deck.slug %}">Study</a>
+          <a class="match" href="{% url 'learning:match' deck.slug %}">Match</a>
+        </div>
+      </div>
+    {% empty %}
+      <p>No decks yet. Run <code>make seed</code> to load content.</p>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

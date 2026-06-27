@@ -1,0 +1,82 @@
+deck:
+  slug: greetings
+  name: "Greetings & Basics (Chào hỏi)"
+  category: conversation
+  order: 3
+  description: >
+    Survival conversational phrases for everyday Southern Vietnamese.
+    These are the first words you'll actually use in Saigon.
+
+cards:
+  - key: hello
+    vietnamese: "Xin chào"
+    english: "Hello"
+    southern_ipa: "/sin tɕaːw/"
+    tone_pattern: [ngang, huyen]
+    tags: [greeting]
+  - key: thanks
+    vietnamese: "Cảm ơn"
+    english: "Thank you"
+    southern_ipa: "/kam əːn/"
+    tone_pattern: [hoi, ngang]
+    tags: [greeting]
+  - key: sorry
+    vietnamese: "Xin lỗi"
+    english: "Sorry / Excuse me"
+    southern_ipa: "/sin loj/"
+    tone_pattern: [ngang, nga]
+    southern_notes: "Southern: ngã (lỗi) merges with the hỏi tone."
+    tags: [greeting, southern-key]
+  - key: yes
+    vietnamese: "Dạ"
+    english: "Yes (polite)"
+    southern_ipa: "/jaː/"
+    tone_pattern: [nang]
+    southern_notes: "Southern: 'd' = 'y', so 'dạ' sounds like 'yah'."
+    tags: [southern-key]
+  - key: no
+    vietnamese: "Không"
+    english: "No"
+    southern_ipa: "/xəwŋ/"
+    tone_pattern: [ngang]
+  - key: how-are-you
+    vietnamese: "Bạn khỏe không?"
+    english: "How are you?"
+    southern_ipa: "/ɓaːn xwɛ xəwŋ/"
+    tone_pattern: [nang, hoi, ngang]
+    tags: [question]
+  - key: im-good
+    vietnamese: "Tôi khỏe"
+    english: "I'm fine"
+    southern_ipa: "/toj xwɛ/"
+    tone_pattern: [ngang, hoi]
+  - key: whats-your-name
+    vietnamese: "Bạn tên gì?"
+    english: "What's your name?"
+    southern_ipa: "/ɓaːn ten ji/"
+    tone_pattern: [nang, ngang, huyen]
+    southern_notes: "Southern: 'gì' (gi) sounds like 'yi'."
+    tags: [question, southern-key]
+  - key: my-name-is
+    vietnamese: "Tôi tên là..."
+    english: "My name is..."
+    southern_ipa: "/toj ten laː/"
+    tone_pattern: [ngang, ngang, huyen]
+  - key: how-much
+    vietnamese: "Bao nhiêu tiền?"
+    english: "How much (money)?"
+    southern_ipa: "/ɓaːw ɲiəw tiən/"
+    tone_pattern: [ngang, ngang, huyen]
+    tags: [question, shopping]
+  - key: delicious
+    vietnamese: "Ngon quá!"
+    english: "So delicious!"
+    southern_ipa: "/ŋɔn waː/"
+    tone_pattern: [ngang, sac]
+    southern_notes: "Southern: 'qu' often softens toward 'w'."
+    tags: [food]
+  - key: goodbye
+    vietnamese: "Tạm biệt"
+    english: "Goodbye"
+    southern_ipa: "/taːm biət/"
+    tone_pattern: [nang, nang]

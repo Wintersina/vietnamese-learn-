@@ -1,0 +1,77 @@
+deck:
+  slug: numbers
+  name: "Numbers (Số đếm)"
+  category: numbers
+  order: 2
+  description: >
+    Counting 0–10, the tens, and the pattern for building larger numbers.
+    Southern speech often drops/softens finals — listen for the audio.
+
+cards:
+  - key: "0"
+    vietnamese: "không"
+    english: "0 — zero"
+    southern_ipa: "/xəwŋ/"
+    tone_pattern: [ngang]
+  - key: "1"
+    vietnamese: "một"
+    english: "1 — one"
+    southern_ipa: "/mot/"
+    tone_pattern: [nang]
+  - key: "2"
+    vietnamese: "hai"
+    english: "2 — two"
+    southern_ipa: "/haːj/"
+    tone_pattern: [ngang]
+  - key: "3"
+    vietnamese: "ba"
+    english: "3 — three"
+    southern_ipa: "/baː/"
+    tone_pattern: [ngang]
+  - key: "4"
+    vietnamese: "bốn"
+    english: "4 — four"
+    southern_ipa: "/ɓon/"
+    tone_pattern: [sac]
+  - key: "5"
+    vietnamese: "năm"
+    english: "5 — five"
+    southern_ipa: "/nam/"
+    tone_pattern: [ngang]
+  - key: "6"
+    vietnamese: "sáu"
+    english: "6 — six"
+    southern_ipa: "/ʂaːw/"
+    tone_pattern: [sac]
+    southern_notes: "Southern 's' is retroflex ('sh'-like)."
+  - key: "7"
+    vietnamese: "bảy"
+    english: "7 — seven"
+    southern_ipa: "/ɓaj/"
+    tone_pattern: [hoi]
+  - key: "8"
+    vietnamese: "tám"
+    english: "8 — eight"
+    southern_ipa: "/taːm/"
+    tone_pattern: [sac]
+  - key: "9"
+    vietnamese: "chín"
+    english: "9 — nine"
+    southern_ipa: "/cin/"
+    tone_pattern: [sac]
+  - key: "10"
+    vietnamese: "mười"
+    english: "10 — ten"
+    southern_ipa: "/mɨəj/"
+    tone_pattern: [huyen]
+  - key: "20"
+    vietnamese: "hai mươi"
+    english: "20 — twenty (lit. 'two ten')"
+    southern_ipa: "/haːj mɨəj/"
+    tone_pattern: [ngang, ngang]
+    southern_notes: "Tens use 'mươi' (ngang), not 'mười'."
+  - key: "100"
+    vietnamese: "một trăm"
+    english: "100 — one hundred"
+    southern_ipa: "/mot ʈam/"
+    tone_pattern: [nang, ngang]

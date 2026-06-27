@@ -1,0 +1,28 @@
+{% extends "learning/base.html" %}
+{% load static %}
+
+{% block title %}{{ deck.name }} · Match{% endblock %}
+
+{% block content %}
+<section class="match">
+  <a class="back" href="{% url 'learning:home' %}">← decks</a>
+  <h1>{{ deck.name }} — Match</h1>
+
+  <div class="match-modes">
+    <a href="?by=translation" class="{% if by == 'translation' %}on{% endif %}">word ↔ meaning</a>
+    {% if deck.category == 'numbers' %}
+      <a href="?by=number" class="{% if by == 'number' %}on{% endif %}">word ↔ number</a>
+    {% endif %}
+  </div>
+
+  <p class="hint">Tap a Vietnamese word, then its match. {% if audio_enabled %}🔊 plays the Southern pronunciation.{% endif %}</p>
+
+  {{ pairs|json_script:"pairs-data" }}
+  <div id="match-game"
+       data-audio-base="{% url 'learning:card_audio' 0 %}"
+       data-grade-url="{% url 'learning:match_grade' deck.slug %}"
+       data-replay-url="?by={{ by }}"
+       data-back-url="{% url 'learning:home' %}"></div>
+</section>
+<script src="{% static 'match.js' %}"></script>
+{% endblock %}

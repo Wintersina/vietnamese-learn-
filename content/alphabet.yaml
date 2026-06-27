@@ -1,0 +1,141 @@
+deck:
+  slug: alphabet
+  name: "Alphabet (Bảng chữ cái)"
+  category: letters
+  order: 1
+  description: >
+    The 29 letters of Vietnamese (chữ Quốc ngữ), with Southern-dialect sounds.
+    Note the Southern features: d/gi/v all sound like "y", r keeps a real "r".
+
+cards:
+  - key: a
+    vietnamese: "A a"
+    english: "a — as in 'father'"
+    southern_ipa: "/aː/"
+  - key: aw
+    vietnamese: "Ă ă"
+    english: "ă — short 'a'"
+    southern_ipa: "/a/"
+  - key: ar
+    vietnamese: "Â â"
+    english: "â — 'uh' as in 'cup'"
+    southern_ipa: "/ə/"
+  - key: b
+    vietnamese: "B b"
+    english: "b — 'b' as in 'boy'"
+    southern_ipa: "/ɓ/"
+  - key: c
+    vietnamese: "C c"
+    english: "c — hard 'k'"
+    southern_ipa: "/k/"
+  - key: d
+    vietnamese: "D d"
+    english: "d — sounds like 'y' in the South"
+    southern_ipa: "/j/"
+    southern_notes: "Southern: 'd' = 'y' (như chữ y). Northern would say 'z'."
+    tags: [southern-key]
+  - key: dd
+    vietnamese: "Đ đ"
+    english: "đ — hard 'd' as in 'dog'"
+    southern_ipa: "/ɗ/"
+    southern_notes: "Different letter from 'd'! This is the real 'd' sound."
+  - key: e
+    vietnamese: "E e"
+    english: "e — 'e' as in 'bet'"
+    southern_ipa: "/ɛ/"
+  - key: ee
+    vietnamese: "Ê ê"
+    english: "ê — 'ay' as in 'day'"
+    southern_ipa: "/e/"
+  - key: g
+    vietnamese: "G g"
+    english: "g — 'g' as in 'go'"
+    southern_ipa: "/ɣ/"
+  - key: gi
+    vietnamese: "Gi gi"
+    english: "gi — sounds like 'y' in the South"
+    southern_ipa: "/j/"
+    southern_notes: "Southern: 'gi' = 'y'. Northern says 'z'."
+    tags: [southern-key]
+  - key: h
+    vietnamese: "H h"
+    english: "h — 'h' as in 'hat'"
+    southern_ipa: "/h/"
+  - key: i
+    vietnamese: "I i"
+    english: "i — 'ee' as in 'see'"
+    southern_ipa: "/i/"
+  - key: k
+    vietnamese: "K k"
+    english: "k — hard 'k' (used before i, e, ê)"
+    southern_ipa: "/k/"
+  - key: l
+    vietnamese: "L l"
+    english: "l — 'l' as in 'love'"
+    southern_ipa: "/l/"
+  - key: m
+    vietnamese: "M m"
+    english: "m — 'm' as in 'man'"
+    southern_ipa: "/m/"
+  - key: n
+    vietnamese: "N n"
+    english: "n — 'n' as in 'no'"
+    southern_ipa: "/n/"
+  - key: o
+    vietnamese: "O o"
+    english: "o — 'aw' as in 'law'"
+    southern_ipa: "/ɔ/"
+  - key: oo
+    vietnamese: "Ô ô"
+    english: "ô — 'oh' as in 'go'"
+    southern_ipa: "/o/"
+  - key: ow
+    vietnamese: "Ơ ơ"
+    english: "ơ — 'ur' as in 'fur'"
+    southern_ipa: "/əː/"
+  - key: p
+    vietnamese: "P p"
+    english: "p — 'p' (mostly in final position)"
+    southern_ipa: "/p/"
+  - key: q
+    vietnamese: "Q q"
+    english: "q — 'k', always written 'qu'"
+    southern_ipa: "/k/"
+  - key: r
+    vietnamese: "R r"
+    english: "r — a real rolled/retroflex 'r' in the South"
+    southern_ipa: "/ɹ/"
+    southern_notes: "Southern keeps 'r' as 'r'. Northern flattens it to 'z'."
+    tags: [southern-key]
+  - key: s
+    vietnamese: "S s"
+    english: "s — retroflex 'sh' in the South"
+    southern_ipa: "/ʂ/"
+    southern_notes: "Southern keeps 's' distinct from 'x' (more 'sh'-like)."
+    tags: [southern-key]
+  - key: t
+    vietnamese: "T t"
+    english: "t — unaspirated 't'"
+    southern_ipa: "/t/"
+  - key: u
+    vietnamese: "U u"
+    english: "u — 'oo' as in 'too'"
+    southern_ipa: "/u/"
+  - key: uw
+    vietnamese: "Ư ư"
+    english: "ư — 'uh' with spread lips"
+    southern_ipa: "/ɨ/"
+  - key: v
+    vietnamese: "V v"
+    english: "v — often sounds like 'y' in the South"
+    southern_ipa: "/j/"
+    southern_notes: "Southern: 'v' frequently = 'y' in casual speech."
+    tags: [southern-key]
+  - key: x
+    vietnamese: "X x"
+    english: "x — 's' as in 'see'"
+    southern_ipa: "/s/"
+  - key: y
+    vietnamese: "Y y"
+    english: "y — 'ee', like 'i'"
+    southern_ipa: "/i/"

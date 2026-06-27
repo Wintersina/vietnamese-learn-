@@ -1,0 +1,13 @@
+{% extends "learning/base.html" %}
+
+{% block title %}{{ deck.name }} · Study{% endblock %}
+
+{% block content %}
+<section class="study">
+  <a class="back" href="{% url 'learning:home' %}">← decks</a>
+  <h1>{{ deck.name }}</h1>
+  <div id="card-slot">
+    {% include "learning/_card.html" %}
+  </div>
+</section>
+{% endblock %}
