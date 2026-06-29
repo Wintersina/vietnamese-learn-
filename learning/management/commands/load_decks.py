@@ -67,13 +67,38 @@ class Command(BaseCommand):
         )
 
         for i, entry in enumerate(data.get("cards", [])):
+            key = str(entry["key"])
             defaults = {f: entry.get(f, "") for f in CARD_FIELDS}
             # JSON list fields must default to [] not "".
             defaults["tone_pattern"] = entry.get("tone_pattern", [])
             defaults["tags"] = entry.get("tags", [])
             defaults["order"] = i
+            defaults["difficulty"] = self._difficulty(deck, key, entry)
             Card.objects.update_or_create(
-                deck=deck, key=str(entry["key"]), defaults=defaults
+                deck=deck, key=key, defaults=defaults
             )
 
         return 1, len(data.get("cards", []))
+
+    @staticmethod
+    def _difficulty(deck: Deck, key: str, entry: dict) -> str:
+        """Resolve a card's learning tier.
+
+        An explicit ``difficulty:`` in the YAML always wins. Otherwise the
+        numbers deck derives it from the value (0-10 easy, 11-99 medium,
+        100+ hard); everything else defaults to easy.
+        """
+        explicit = entry.get("difficulty")
+        if explicit in Card.Difficulty.values:
+            return explicit
+        if deck.category == Deck.Category.NUMBERS:
+            try:
+                n = int(key)
+            except ValueError:
+                return Card.Difficulty.EASY
+            if n <= 10:
+                return Card.Difficulty.EASY
+            if n < 100:
+                return Card.Difficulty.MEDIUM
+            return Card.Difficulty.HARD
+        return Card.Difficulty.EASY

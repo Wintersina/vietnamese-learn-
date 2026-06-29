@@ -11,18 +11,23 @@ from __future__ import annotations
 import json
 import random
 
-from django.db.models import Q
 from django.http import FileResponse, Http404, HttpResponse, JsonResponse
 from django.shortcuts import get_object_or_404, render
-from django.utils import timezone
 from django.views.decorators.http import require_POST
 
 from . import audio, dialect
 from .models import Card, Deck, Review
 from .srs import apply_review
 
-# How many pairs to show in one matching round.
+# How many pairs to show in one matching round when no level is chosen.
 MATCH_BATCH = 6
+# When a difficulty level is chosen, drill the whole tier up to this many pairs.
+MATCH_LEVEL_MAX = 12
+# How many cards to show in one learning grid.
+LEARN_BATCH = 6
+
+# Difficulty levels offered as filters; "" means "all".
+LEVELS = [("", "All"), ("easy", "Easy"), ("medium", "Medium"), ("hard", "Hard")]
 
 
 def home(request):
@@ -30,13 +35,9 @@ def home(request):
     return render(request, "learning/home.html", {"decks": decks})
 
 
-def _next_card(deck: Deck) -> Card | None:
-    """The most-overdue card in ``deck`` (new cards have due=created time)."""
-    return (
-        deck.cards.filter(Q(due__lte=timezone.now()))
-        .order_by("due", "order")
-        .first()
-    )
+def _level(requested: str | None) -> str | None:
+    """Validate a requested difficulty level, or None for 'all'."""
+    return requested if requested in Card.Difficulty.values else None
 
 
 def _card_context(card: Card | None) -> dict:
@@ -52,26 +53,31 @@ def _card_context(card: Card | None) -> dict:
 
 
 def study(request, slug: str):
+    """Render a batch of cards (English front, reveal Vietnamese) to learn."""
     deck = get_object_or_404(Deck, slug=slug)
-    card = _next_card(deck)
+    level = _level(request.GET.get("level"))
+
+    cards = deck.cards.all()
+    if level:
+        cards = cards.filter(difficulty=level)
+    batch = list(cards.order_by("due", "order")[:LEARN_BATCH])
+
     return render(
         request,
         "learning/study.html",
-        {"deck": deck, **_card_context(card)},
+        {
+            "deck": deck,
+            "level": level or "",
+            "levels": LEVELS,
+            "card_contexts": [_card_context(c) for c in batch],
+            "empty": not batch,
+        },
     )
-
-
-def next_card(request, slug: str):
-    """HTMX partial: render the next due card (or a 'done' state)."""
-    deck = get_object_or_404(Deck, slug=slug)
-    card = _next_card(deck)
-    return render(request, "learning/_card.html",
-                  {"deck": deck, **_card_context(card)})
 
 
 @require_POST
 def review(request, slug: str, card_id: int):
-    """Grade a card, advance its schedule, return the next card partial."""
+    """Grade a single card and return its 'learned' partial (in place)."""
     deck = get_object_or_404(Deck, slug=slug)
     card = get_object_or_404(Card, pk=card_id, deck=deck)
 
@@ -86,9 +92,8 @@ def review(request, slug: str, card_id: int):
     card.save(update_fields=["fsrs_state", "due", "reps", "lapses", "updated_at"])
     Review.objects.create(card=card, rating=rating)
 
-    nxt = _next_card(deck)
     return render(request, "learning/_card.html",
-                  {"deck": deck, **_card_context(nxt)})
+                  {"deck": deck, "graded": True, **_card_context(card)})
 
 
 # --- Matching game --------------------------------------------------------
@@ -109,14 +114,20 @@ def _match_mode(deck: Deck, requested: str | None) -> str:
 
 
 def match(request, slug: str):
-    """Render a round of the matching game for ``deck``."""
+    """Render a round of the matching game for ``deck`` at a difficulty level."""
     deck = get_object_or_404(Deck, slug=slug)
     by = _match_mode(deck, request.GET.get("by"))
+    level = _level(request.GET.get("level"))
 
-    # Favor due cards, then take a random batch for variety.
-    pool = list(deck.cards.order_by("due", "order")[: MATCH_BATCH * 2])
+    cards = deck.cards.all()
+    if level:
+        cards = cards.filter(difficulty=level)
+    # With a level chosen, drill the whole tier (e.g. all of Easy numbers);
+    # otherwise favor due cards and take a small random batch for variety.
+    size = MATCH_LEVEL_MAX if level else MATCH_BATCH
+    pool = list(cards.order_by("due", "order")[: size * 2])
     random.shuffle(pool)
-    batch = pool[:MATCH_BATCH]
+    batch = pool[:size]
     pairs = [
         {
             "id": c.id,
@@ -129,7 +140,14 @@ def match(request, slug: str):
     return render(
         request,
         "learning/match.html",
-        {"deck": deck, "by": by, "pairs": pairs, "audio_enabled": audio.is_enabled()},
+        {
+            "deck": deck,
+            "by": by,
+            "level": level or "",
+            "levels": LEVELS,
+            "pairs": pairs,
+            "audio_enabled": audio.is_enabled(),
+        },
     )
 
 

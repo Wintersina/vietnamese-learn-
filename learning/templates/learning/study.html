@@ -1,13 +1,36 @@
 {% extends "learning/base.html" %}
 
-{% block title %}{{ deck.name }} · Study{% endblock %}
+{% block title %}{{ deck.name }} · Learn{% endblock %}
 
 {% block content %}
 <section class="study">
   <a class="back" href="{% url 'learning:home' %}">← decks</a>
-  <h1>{{ deck.name }}</h1>
-  <div id="card-slot">
-    {% include "learning/_card.html" %}
+  <h1>{{ deck.name }} — Learn</h1>
+
+  <div class="level-bar">
+    {% for value, label in levels %}
+      <a href="?level={{ value }}"
+         class="{% if value == level %}on{% endif %}">{{ label }}</a>
+    {% endfor %}
   </div>
+
+  <p class="hint">English is shown — tap <strong>Show Vietnamese</strong> to reveal, then rate how well you knew it.</p>
+
+  {% if empty %}
+    <article class="flashcard done">
+      <div class="vn">🎉 Xong rồi!</div>
+      <p class="en">Nothing left to learn at this level right now.</p>
+      <a class="play" href="{% url 'learning:home' %}">← Back to decks</a>
+    </article>
+  {% else %}
+    <div class="learn-grid">
+      {% for c in card_contexts %}
+        {% include "learning/_card.html" with card=c.card southern_notes=c.southern_notes audio_enabled=c.audio_enabled ratings=c.ratings %}
+      {% endfor %}
+    </div>
+    <div class="learn-foot">
+      <a class="btn" href="?level={{ level }}">Next batch →</a>
+    </div>
+  {% endif %}
 </section>
 {% endblock %}

@@ -1,22 +1,31 @@
 {% if card %}
-<article class="flashcard">
+{% if graded %}
+<article class="flashcard learn-card graded" id="card-{{ card.id }}">
+  <div class="en">{{ card.english }}</div>
   <div class="vn">{{ card.vietnamese }}</div>
+  {% if card.southern_ipa %}<div class="ipa">{{ card.southern_ipa }}</div>{% endif %}
+  <div class="got">✓ Học rồi (learned)</div>
+</article>
+{% else %}
+<article class="flashcard learn-card" id="card-{{ card.id }}">
+  <!-- English is shown first; reveal flips to the Vietnamese answer. -->
+  <div class="en front">{{ card.english }}</div>
 
-  {% if audio_enabled %}
-    <audio id="audio-{{ card.id }}" src="{% url 'learning:card_audio' card.id %}" preload="none"></audio>
-    <button class="play" type="button"
-            onclick="document.getElementById('audio-{{ card.id }}').play()">
-      🔊 Nghe (listen)
-    </button>
-  {% endif %}
-
-  <!-- CSS-only reveal: the checkbox toggles the answer + rating row. -->
   <input type="checkbox" id="reveal-{{ card.id }}" class="reveal-toggle">
-  <label class="reveal-btn" for="reveal-{{ card.id }}">Show answer</label>
+  <label class="reveal-btn" for="reveal-{{ card.id }}">Show Vietnamese</label>
 
   <div class="answer">
+    <div class="vn">{{ card.vietnamese }}</div>
+
+    {% if audio_enabled %}
+      <audio id="audio-{{ card.id }}" src="{% url 'learning:card_audio' card.id %}" preload="none"></audio>
+      <button class="play" type="button"
+              onclick="document.getElementById('audio-{{ card.id }}').play()">
+        🔊 Nghe (listen)
+      </button>
+    {% endif %}
+
     {% if card.southern_ipa %}<div class="ipa">{{ card.southern_ipa }}</div>{% endif %}
-    <div class="en">{{ card.english }}</div>
     {% if card.tone_pattern %}
       <div class="tones">
         {% for t in card.tone_pattern %}<span class="tone tone-{{ t }}">{{ t }}</span>{% endfor %}
@@ -29,18 +38,13 @@
         <button class="rate rate-{{ value }}"
                 hx-post="{% url 'learning:review' deck.slug card.id %}"
                 hx-vals='{"rating": "{{ value }}"}'
-                hx-target="#card-slot"
-                hx-swap="innerHTML">
+                hx-target="#card-{{ card.id }}"
+                hx-swap="outerHTML">
           {{ label }}
         </button>
       {% endfor %}
     </div>
   </div>
 </article>
-{% else %}
-<article class="flashcard done">
-  <div class="vn">🎉 Xong rồi!</div>
-  <p class="en">No more cards due in this deck right now.</p>
-  <a class="play" href="{% url 'learning:home' %}">← Back to decks</a>
-</article>
+{% endif %}
 {% endif %}

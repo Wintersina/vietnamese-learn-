@@ -37,9 +37,23 @@ class Deck(models.Model):
 class Card(models.Model):
     """A single thing to learn, with Southern-dialect pronunciation data."""
 
+    class Difficulty(models.TextChoices):
+        EASY = "easy", "Easy"
+        MEDIUM = "medium", "Medium"
+        HARD = "hard", "Hard"
+
     deck = models.ForeignKey(Deck, on_delete=models.CASCADE, related_name="cards")
     # Stable identifier from the YAML source, unique within a deck.
     key = models.SlugField()
+
+    # Learning tier. For the numbers deck it's auto-derived from the value
+    # (0-10 easy, 11-99 medium, 100+ hard); other decks set it per-word.
+    difficulty = models.CharField(
+        max_length=10,
+        choices=Difficulty.choices,
+        default=Difficulty.EASY,
+        db_index=True,
+    )
 
     vietnamese = models.CharField(max_length=200)
     english = models.CharField(max_length=200)

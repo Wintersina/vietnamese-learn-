@@ -40,17 +40,20 @@ cards:
     southern_ipa: "/xəwŋ/"
     tone_pattern: [ngang]
   - key: how-are-you
+    difficulty: medium
     vietnamese: "Bạn khỏe không?"
     english: "How are you?"
     southern_ipa: "/ɓaːn xwɛ xəwŋ/"
     tone_pattern: [nang, hoi, ngang]
     tags: [question]
   - key: im-good
+    difficulty: medium
     vietnamese: "Tôi khỏe"
     english: "I'm fine"
     southern_ipa: "/toj xwɛ/"
     tone_pattern: [ngang, hoi]
   - key: whats-your-name
+    difficulty: medium
     vietnamese: "Bạn tên gì?"
     english: "What's your name?"
     southern_ipa: "/ɓaːn ten ji/"
@@ -58,17 +61,20 @@ cards:
     southern_notes: "Southern: 'gì' (gi) sounds like 'yi'."
     tags: [question, southern-key]
   - key: my-name-is
+    difficulty: medium
     vietnamese: "Tôi tên là..."
     english: "My name is..."
     southern_ipa: "/toj ten laː/"
     tone_pattern: [ngang, ngang, huyen]
   - key: how-much
+    difficulty: medium
     vietnamese: "Bao nhiêu tiền?"
     english: "How much (money)?"
     southern_ipa: "/ɓaːw ɲiəw tiən/"
     tone_pattern: [ngang, ngang, huyen]
     tags: [question, shopping]
   - key: delicious
+    difficulty: medium
     vietnamese: "Ngon quá!"
     english: "So delicious!"
     southern_ipa: "/ŋɔn waː/"

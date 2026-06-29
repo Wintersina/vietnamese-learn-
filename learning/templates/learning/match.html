@@ -9,10 +9,17 @@
   <h1>{{ deck.name }} — Match</h1>
 
   <div class="match-modes">
-    <a href="?by=translation" class="{% if by == 'translation' %}on{% endif %}">word ↔ meaning</a>
+    <a href="?by=translation&level={{ level }}" class="{% if by == 'translation' %}on{% endif %}">word ↔ meaning</a>
     {% if deck.category == 'numbers' %}
-      <a href="?by=number" class="{% if by == 'number' %}on{% endif %}">word ↔ number</a>
+      <a href="?by=number&level={{ level }}" class="{% if by == 'number' %}on{% endif %}">word ↔ number</a>
     {% endif %}
+  </div>
+
+  <div class="level-bar">
+    {% for value, label in levels %}
+      <a href="?by={{ by }}&level={{ value }}"
+         class="{% if value == level %}on{% endif %}">{{ label }}</a>
+    {% endfor %}
   </div>
 
   <p class="hint">Tap a Vietnamese word, then its match. {% if audio_enabled %}🔊 plays the Southern pronunciation.{% endif %}</p>
@@ -21,7 +28,7 @@
   <div id="match-game"
        data-audio-base="{% url 'learning:card_audio' 0 %}"
        data-grade-url="{% url 'learning:match_grade' deck.slug %}"
-       data-replay-url="?by={{ by }}"
+       data-replay-url="?by={{ by }}&level={{ level }}"
        data-back-url="{% url 'learning:home' %}"></div>
 </section>
 <script src="{% static 'match.js' %}"></script>

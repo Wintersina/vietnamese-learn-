@@ -11,7 +11,7 @@
         <span class="deck-name">{{ deck.name }}</span>
         <span class="deck-count">{{ deck.cards.count }} cards</span>
         <div class="deck-actions">
-          <a class="study" href="{% url 'learning:study' deck.slug %}">Study</a>
+          <a class="study" href="{% url 'learning:study' deck.slug %}">Learn</a>
           <a class="match" href="{% url 'learning:match' deck.slug %}">Match</a>
         </div>
       </div>

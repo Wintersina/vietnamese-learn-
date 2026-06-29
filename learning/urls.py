@@ -7,7 +7,6 @@ app_name = "learning"
 urlpatterns = [
     path("", views.home, name="home"),
     path("study/<slug:slug>/", views.study, name="study"),
-    path("study/<slug:slug>/next/", views.next_card, name="next_card"),
     path("study/<slug:slug>/review/<int:card_id>/", views.review, name="review"),
     path("match/<slug:slug>/", views.match, name="match"),
     path("match/<slug:slug>/grade/", views.match_grade, name="match_grade"),
